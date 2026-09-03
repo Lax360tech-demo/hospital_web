@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   CalendarDays,
   Clock3,
@@ -11,6 +12,7 @@ import {
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Appointment() {
   const [submitted, setSubmitted] = useState(false);
@@ -384,6 +386,22 @@ function Appointment() {
                 </div>
 
 
+                {/* DPDP CONSENT (Digital Personal Data Protection Act) */}
+                <div className="dpdp-form-consent-box">
+                  <label className="dpdp-form-consent-label">
+                    <input
+                      type="checkbox"
+                      required
+                    />
+                    <span>
+                      I agree to the processing of my personal data for the purpose described in the{" "}
+                      <Link to="/privacy-notice" target="_blank" rel="noopener noreferrer" className="dpdp-form-link">
+                        Privacy Notice
+                      </Link>.
+                    </span>
+                  </label>
+                </div>
+
                 {/* SUBMIT */}
 
                 <button
@@ -460,6 +478,8 @@ function Appointment() {
         </a>
 
       </section>
+
+      <Footer />
 
     </div>
   );

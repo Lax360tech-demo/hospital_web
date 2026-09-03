@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const services = [
   {
@@ -315,6 +316,8 @@ function Services() {
         </Link>
 
       </section>
+
+      <Footer />
 
     </div>
   );

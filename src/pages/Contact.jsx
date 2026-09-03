@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -7,11 +8,20 @@ import {
   MessageCircle,
   Phone,
   Send,
+  CheckCircle2,
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <div className="contact-page">
 
@@ -196,19 +206,68 @@ function Contact() {
               </div>
 
 
-              <form>
+              {!submitted ? (
+                <form onSubmit={handleSubmit}>
 
-                <div className="contact-form-row">
+                  <div className="contact-form-row">
+
+                    <div className="contact-field">
+
+                      <label>
+                        Full Name
+                      </label>
+
+                      <input
+                        type="text"
+                        placeholder="Enter your name"
+                        required
+                      />
+
+                    </div>
+
+
+                    <div className="contact-field">
+
+                      <label>
+                        Phone Number
+                      </label>
+
+                      <input
+                        type="tel"
+                        placeholder="+91 XXXXX XXXXX"
+                        required
+                      />
+
+                    </div>
+
+                  </div>
+
 
                   <div className="contact-field">
 
                     <label>
-                      Full Name
+                      Email Address
+                    </label>
+
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      required
+                    />
+
+                  </div>
+
+
+                  <div className="contact-field">
+
+                    <label>
+                      Subject
                     </label>
 
                     <input
                       type="text"
-                      placeholder="Enter your name"
+                      placeholder="How can we help you?"
+                      required
                     />
 
                   </div>
@@ -217,77 +276,68 @@ function Contact() {
                   <div className="contact-field">
 
                     <label>
-                      Phone Number
+                      Message
                     </label>
 
-                    <input
-                      type="tel"
-                      placeholder="+91 XXXXX XXXXX"
-                    />
+                    <textarea
+                      rows="5"
+                      placeholder="Write your message here..."
+                      required
+                    ></textarea>
 
                   </div>
 
+
+                  {/* DPDP CONSENT (Digital Personal Data Protection Act) */}
+                  <div className="dpdp-form-consent-box">
+                    <label className="dpdp-form-consent-label">
+                      <input
+                        type="checkbox"
+                        required
+                      />
+                      <span>
+                        I agree to the processing of my personal data for the purpose described in the{" "}
+                        <Link to="/privacy-notice" target="_blank" rel="noopener noreferrer" className="dpdp-form-link">
+                          Privacy Notice
+                        </Link>.
+                      </span>
+                    </label>
+                  </div>
+
+
+                  <button
+                    type="submit"
+                    className="contact-submit-btn"
+                  >
+
+                    <Send size={17} />
+
+                    <span>
+                      Send Message
+                    </span>
+
+                    <ArrowRight size={17} />
+
+                  </button>
+
+                </form>
+              ) : (
+                <div className="appointment-success">
+                  <div className="success-icon">
+                    <CheckCircle2 size={45} />
+                  </div>
+                  <h3>Message Sent Successfully!</h3>
+                  <p>
+                    Thank you for reaching out to LAX360 Multi-Specialist Hospital. Our support team will get back to you shortly.
+                  </p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="success-back-btn"
+                  >
+                    Send Another Message
+                  </button>
                 </div>
-
-
-                <div className="contact-field">
-
-                  <label>
-                    Email Address
-                  </label>
-
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                  />
-
-                </div>
-
-
-                <div className="contact-field">
-
-                  <label>
-                    Subject
-                  </label>
-
-                  <input
-                    type="text"
-                    placeholder="How can we help you?"
-                  />
-
-                </div>
-
-
-                <div className="contact-field">
-
-                  <label>
-                    Message
-                  </label>
-
-                  <textarea
-                    rows="5"
-                    placeholder="Write your message here..."
-                  ></textarea>
-
-                </div>
-
-
-                <button
-                  type="submit"
-                  className="contact-submit-btn"
-                >
-
-                  <Send size={17} />
-
-                  <span>
-                    Send Message
-                  </span>
-
-                  <ArrowRight size={17} />
-
-                </button>
-
-              </form>
+              )}
 
             </div>
 
@@ -411,6 +461,8 @@ function Contact() {
         </div>
 
       </section>
+
+      <Footer />
 
     </div>
   );

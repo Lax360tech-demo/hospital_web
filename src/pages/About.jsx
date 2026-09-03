@@ -6,11 +6,11 @@ import {
   HeartPulse,
   ShieldCheck,
   Stethoscope,
-  Users,
   Activity,
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function About() {
   return (
@@ -357,6 +357,8 @@ function About() {
         </Link>
 
       </section>
+
+      <Footer />
 
     </div>
   );

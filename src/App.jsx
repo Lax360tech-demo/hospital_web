@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -11,7 +10,18 @@ import Facilities from "./pages/Facilities";
 import Specialities from "./pages/Specialities";
 import HealthPackages from "./pages/HealthPackages";
 import Contact from "./pages/Contact";
+import FAQ from "./pages/FAQ";
+import Blogs from "./pages/Blogs";
 
+// DPDP Compliance Pages
+import PrivacyCentre from "./pages/PrivacyCentre";
+import PrivacyNotice from "./pages/PrivacyNotice";
+import Terms from "./pages/Terms";
+
+// DPDP Components & Context
+import { PrivacyProvider } from "./context/PrivacyContext";
+import CookieBanner from "./components/CookieBanner";
+import CookieModal from "./components/CookieModal";
 
 /* =========================================
    SCROLL TO TOP ON PAGE CHANGE
@@ -30,78 +40,62 @@ function ScrollToTop() {
   return null;
 }
 
-
 /* =========================================
    APP
 ========================================= */
 
 function App() {
   return (
-    <BrowserRouter>
+    <PrivacyProvider>
+      <BrowserRouter>
+        <ScrollToTop />
 
-      <ScrollToTop />
+        <Routes>
+          {/* HOME */}
+          <Route path="/" element={<Home />} />
 
-      <Routes>
+          {/* APPOINTMENT */}
+          <Route path="/appointment" element={<Appointment />} />
 
-        {/* HOME */}
-        <Route
-          path="/"
-          element={<Home />}
-        />
+          {/* DOCTORS */}
+          <Route path="/doctors" element={<Doctors />} />
 
-        {/* APPOINTMENT */}
-        <Route
-          path="/appointment"
-          element={<Appointment />}
-        />
+          {/* ABOUT */}
+          <Route path="/about" element={<About />} />
 
-        {/* DOCTORS */}
-        <Route
-          path="/doctors"
-          element={<Doctors />}
-        />
+          {/* SERVICES */}
+          <Route path="/services" element={<Services />} />
 
-        {/* ABOUT */}
-        <Route
-          path="/about"
-          element={<About />}
-        />
+          {/* FACILITIES */}
+          <Route path="/facilities" element={<Facilities />} />
 
-        {/* SERVICES */}
-        <Route
-          path="/services"
-          element={<Services />}
-        />
+          {/* SPECIALITIES */}
+          <Route path="/specialities" element={<Specialities />} />
 
-        {/* FACILITIES */}
-        <Route
-          path="/facilities"
-          element={<Facilities />}
-        />
+          {/* HEALTH PACKAGES */}
+          <Route path="/health-packages" element={<HealthPackages />} />
 
-        {/* SPECIALITIES */}
-        <Route
-          path="/specialities"
-          element={<Specialities />}
-        />
+          {/* CONTACT */}
+          <Route path="/contact" element={<Contact />} />
 
-        {/* HEALTH PACKAGES */}
-        <Route
-          path="/health-packages"
-          element={<HealthPackages />}
-        />
+          {/* FAQ & BLOGS */}
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/blogs" element={<Blogs />} />
 
-        {/* CONTACT */}
-        <Route
-          path="/contact"
-          element={<Contact />}
-        />
+          {/* DPDP PRIVACY ROUTES */}
+          <Route path="/privacy-centre" element={<PrivacyCentre />} />
+          <Route path="/privacy-notice" element={<PrivacyNotice />} />
+          <Route path="/privacy-policy" element={<PrivacyNotice />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/terms-and-conditions" element={<Terms />} />
+        </Routes>
 
-      </Routes>
-
-    </BrowserRouter>
+        {/* DPDP COOKIE BANNER & PREFERENCES MODAL */}
+        <CookieBanner />
+        <CookieModal />
+      </BrowserRouter>
+    </PrivacyProvider>
   );
 }
 
 export default App;
-

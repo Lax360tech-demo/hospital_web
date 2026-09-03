@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
@@ -38,7 +39,9 @@ function Home() {
           loop
           playsInline
           preload="auto"
+          poster="/hospital-hero-poster.jpg"
         >
+          <source src="/hospital-hero.webm" type="video/webm" />
           <source src="/hospital-hero.mp4" type="video/mp4" />
         </video>
 
@@ -943,7 +946,13 @@ function Home() {
     muted
     loop
     playsInline
+    preload="metadata"
+    poster="/facilities/hospital-infrastructure-poster.jpg"
   >
+    <source
+      src="/facilities/hospital-infrastructure.webm"
+      type="video/webm"
+    />
     <source
       src="/facilities/hospital-infrastructure.mp4"
       type="video/mp4"
@@ -1658,80 +1667,9 @@ function Home() {
       </section>
 
     {/* =========================
-    FOOTER
-========================= */}
-<footer className="hospital-footer">
-
-  <div className="footer-container">
-
-    <div className="footer-brand">
-      <div className="footer-logo">
-  <img
-    src="/public/hospital-logo.png"
-    alt="LAX360 Multi-Specialist Hospital"
-    className="footer-real-logo"
-  />
-
-  <div className="footer-brand-text">
-    <strong>LAX360</strong>
-    <span>MULTI-SPECIALIST HOSPITAL</span>
-  </div>
-    </div>
-</div>
-
-
-    <div className="footer-column">
-
-      <h3>Quick Links</h3>
-
-      <Link to="/">Home</Link>
-      <Link to="/about">About Us</Link>
-      <Link to="/doctors">Our Doctors</Link>
-      <Link to="/specialities">Specialities</Link>
-      <Link to="/facilities">Facilities</Link>
-
-    </div>
-
-
-    <div className="footer-column">
-
-      <h3>Patient Care</h3>
-
-      <Link to="/appointment">Book Appointment</Link>
-      <Link to="/health-packages">
-        Health Packages
-      </Link>
-      <Link to="/blogs">Health Insights</Link>
-      <Link to="/faq">FAQs</Link>
-      <Link to="/contact">Contact Us</Link>
-
-    </div>
-
-
-    <div className="footer-column">
-
-      <h3>Get In Touch</h3>
-
-      <p>123 Healthcare Avenue</p>
-      <p>Salem, Tamil Nadu</p>
-      <p>+91 98765 43210</p>
-      <p>care@healthcarehospital.com</p>
-
-    </div>
-
-  </div>
-
-
-  <div className="footer-bottom">
-
-    <span>
-      © 2026 HealthCare Multi-Speciality Hospital.
-      All rights reserved.
-    </span>
-
-  </div>
-
-</footer>
+        FOOTER
+    ========================= */}
+    <Footer />
 
   </div>
 );

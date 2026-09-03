@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const packages = [
   {
@@ -428,6 +429,8 @@ function HealthPackages() {
         </div>
 
       </section>
+
+      <Footer />
 
     </div>
   );
